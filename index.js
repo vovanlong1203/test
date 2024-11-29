@@ -175,7 +175,10 @@ app.post('/api/momo/pay', isAuthenticated, async (req, res) => {
 
 
 async function main() {
-    await mongoose.connect(process.env.DB_URL);
+    await mongoose.connect(process.env.DB_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
 
     app.get("/", (req, res) => {
         res.send("Duy E-commerce Server is running....!");
